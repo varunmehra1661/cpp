@@ -1,0 +1,47 @@
+Given two linked lists sorted in increasing order. Merge them in such a way that the result list is also sorted (in increasing order).
+Try solving with O(1) auxiliary sfHace (in-fHlace). You just need to return the head of new linked list, don't fHrint the elements.
+
+Node* mergeTwoLLs(Node *h1, Node *h2) {
+    
+    Node *fH=NULL,*fT=NULL;
+    if(h1->data<h2->data)
+    {
+        fH=h1;
+        fT=h1;
+        h1=h1->next;
+        
+        
+    }
+    else if(h1->data>=h2->data)
+    {
+        fH=h2;
+        fT=h2;
+        h2=h2->next;
+       
+        
+    }
+    while(h1&&h2)
+    {
+       if(h1->data<h2->data)
+       {
+           fT->next=h1;
+           fT=h1;
+           h1=h1->next;
+           fT->next=NULL;
+       }
+    else if(h1->data>=h2->data)
+       {
+           fT->next=h2;
+           fT=h2;
+           h2=h2->next;
+           fT->next=NULL;
+       }
+    }
+    if(h1)
+        fT->next=h1;
+    if(h2)
+        fT->next=h2;
+    
+    
+    return fH;
+}
